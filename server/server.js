@@ -1,5 +1,6 @@
 const express = require("express");
 const ConnectToDB = require("./config/dbConnection");
+const authRoutes = require("./routes/auth.route");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
@@ -13,7 +14,7 @@ app.use(cookieParser());
 // CORS //
 app.use(
   cors({
-    origin: "http://localhost:5173/",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Content-Type",
@@ -26,6 +27,10 @@ app.use(
   })
 );
 // CORS //
+
+// ROUTES MAPPING //
+app.use("/api/auth", authRoutes);
+// ROUTES MAPPING //
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT :- ${PORT}`);

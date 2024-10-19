@@ -16,13 +16,25 @@ import Account from "./pages/shopping/Account";
 import CheckOut from "./pages/shopping/CheckOut";
 import CheckAuth from "./components/common/CheckAuth";
 import UnAuth from "./pages/un-auth/UnAuth";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { checkAuth } from "./redux/slices/authSlice";
+import { Skeleton } from "./components/ui/skeleton";
 
 function App() {
-  const isAuthenticated = false;
-  const user = {
-    name: "Sandip",
-    role: "admin",
-  };
+  const { isAuthenticated, user, isLoading } = useSelector(
+    (state) => state.auth
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <Skeleton className="w-full h-screen bg-red-200" />;
+  }
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
