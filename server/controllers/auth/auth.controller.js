@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/User.model");
+const User = require("../../models/User.model");
 require("dotenv").config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
