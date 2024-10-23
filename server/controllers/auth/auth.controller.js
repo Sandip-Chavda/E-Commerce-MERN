@@ -81,6 +81,7 @@ const login = async (req, res) => {
         id: userAlreadyExists._id,
         role: userAlreadyExists.role,
         email: userAlreadyExists.email,
+        userName: userAlreadyExists.userName,
       },
       JWT_SECRET,
       { expiresIn: "7d" }
@@ -93,6 +94,7 @@ const login = async (req, res) => {
         email: userAlreadyExists.email,
         role: userAlreadyExists.role,
         id: userAlreadyExists._id,
+        userName: userAlreadyExists.userName,
       },
     });
   } catch (error) {

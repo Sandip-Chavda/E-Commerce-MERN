@@ -2,6 +2,7 @@ const express = require("express");
 const ConnectToDB = require("./config/dbConnection");
 const authRoutes = require("./routes/auth/auth.route");
 const adminProductRoutes = require("./routes/admin/products.route");
+const shopProductsRoutes = require("./routes/shop/products.route");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
@@ -33,6 +34,8 @@ app.use(
 app.use("/api/auth", authRoutes);
 
 app.use("/api/admin/products", adminProductRoutes);
+
+app.use("/api/shop/products", shopProductsRoutes);
 // ROUTES MAPPING //
 
 app.listen(PORT, () => {
